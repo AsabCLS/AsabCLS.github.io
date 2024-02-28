@@ -55,6 +55,7 @@ const onOpenObservable = api.onOpen();
 // Subscrever aos eventos de fechamento
 onCloseObservable.subscribe(() => {
   console.log("Conexão fechada. Tentando reconectar...");
+  unsubscribeTicks();
   window.location.reload();
   setTimeout(() => {
     try {
