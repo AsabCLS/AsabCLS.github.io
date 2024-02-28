@@ -23,6 +23,7 @@ function createWebSocket(app_id) {
 
     connection.onclose = function (event) {
       console.log("Conexão fechada:", event);
+      tickSubscriber().unsubscribe
       window.location.reload();
     };
 
@@ -125,6 +126,15 @@ const ticks_request = {
 const getTicksHistory = () => api.ticksHistory(ticks_history_request);
 
 const tickSubscriber = () => api.subscribe(ticks_request);
+
+const subscribeTicks = async () => {
+  a1.addEventListener("message", subscription2);
+  await tickSubscriber();
+};
+const unsubscribeTicks = async () => {
+  a1.removeEventListener("message", subscription2, false);
+  await tickSubscriber().unsubscribe();
+};
 
 const ping = () => {
   setInterval(() => {
