@@ -24,13 +24,13 @@ function createWebSocket(app_id) {
     connection.onclose = function (event) {
       console.log("Conexão fechada:", event);
       window.location.reload();
-      reconnect()
+      
     };
 
     connection.onerror = function (event) {
       console.error("Erro na conexão:", event);
       window.location.reload();
-      reconnect()
+      
     };
     return connection;
   }
