@@ -23,7 +23,6 @@ function createWebSocket(app_id) {
 
     connection.onclose = function (event) {
       console.log("Conexão fechada:", event);
-      tickSubscriber().unsubscribe
       window.location.reload();
     };
 
