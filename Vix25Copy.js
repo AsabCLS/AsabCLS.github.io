@@ -58,17 +58,19 @@ onCloseObservable.subscribe(() => {
   setTimeout(() => {
     try {
       // Usar o método reconnect() fornecido pela API
-      api.closeHandler();
-      api.reconnect();
+      a1;
+      api2;
+      api;
       window.location.reload();
-      console.log("Método closeHandler() chamado.");
+      console.log("Método v50 chamado.");
 
     } catch (error) {
       console.log("Erro ao tentar reconectar:"+ error);
-      api.closeHandler();
-      api.reconnect();
+      a1;
+      api2;
+      api;
       window.location.reload();
-      console.log("Método closeHandler() chamado.");
+      console.log("Método v50 chamado.");
     }
   }, 1000); // Tempo de espera de 1 segundos
 });
