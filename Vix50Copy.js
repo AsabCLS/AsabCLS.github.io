@@ -57,6 +57,7 @@ const onOpenObservable = api.onOpen();
 // Subscrever aos eventos de fechamento
 onCloseObservable.subscribe(() => {
   console.log("Conexão fechada. Tentando reconectar...");
+  unsubscribeTicks();
   window.location.reload();
   setTimeout(() => {
     try {
@@ -67,7 +68,7 @@ onCloseObservable.subscribe(() => {
       console.log("Método closeHandler() chamado.");
 
     } catch (error) {
-      console.error("Erro ao tentar reconectar:", error);
+      console.log("Erro ao tentar reconectar:"+ error);
       api.closeHandler();
       api.reconnect();
       window.location.reload();
@@ -86,7 +87,7 @@ window.addEventListener("offline", () => {
 onOpenObservable.subscribe(() => {
   console.log("Conexão aberta.");
   autorization();
-  tickSubscriber();
+  subscribeTicks();
   ping();
 });
 
@@ -126,6 +127,15 @@ const ticks_request = {
 const getTicksHistory = () => api.ticksHistory(ticks_history_request);
 
 const tickSubscriber = () => api.subscribe(ticks_request);
+
+const subscribeTicks = async () => {
+  a1.addEventListener("message", subscription2);
+  await tickSubscriber();
+};
+const unsubscribeTicks = async () => {
+  a1.removeEventListener("message", subscription2, false);
+  await tickSubscriber().unsubscribe();
+};
 
 const ping = () => {
   setInterval(() => {
