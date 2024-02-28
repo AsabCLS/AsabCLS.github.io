@@ -39,7 +39,7 @@ function createWebSocket(app_id) {
     console.log("Tentando reconectar em 500 milisegundos...");
     setTimeout(() => {
       connect();
-    }, 500); // Tentar reconectar após 5 segundos
+    }, 1000); // Tentar reconectar após 5 segundos
   }
   // Inicializa a conexão
   return connect();
@@ -62,17 +62,19 @@ onCloseObservable.subscribe(() => {
   setTimeout(() => {
     try {
       // Usar o método reconnect() fornecido pela API
-      api.closeHandler();
-      api.reconnect();
+      a1;
+      api2;
+      api;
       window.location.reload();
-      console.log("Método closeHandler() chamado.");
+      console.log("Método v50 chamado.");
 
     } catch (error) {
       console.log("Erro ao tentar reconectar:"+ error);
-      api.closeHandler();
-      api.reconnect();
+      a1;
+      api2;
+      api;
       window.location.reload();
-      console.log("Método closeHandler() chamado.");
+      console.log("Método v50 chamado.");
     }
   }, 1000); // Tempo de espera de 1 segundos
 });
