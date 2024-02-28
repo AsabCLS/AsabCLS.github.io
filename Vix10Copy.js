@@ -84,7 +84,7 @@ window.addEventListener("offline", () => {
 onOpenObservable.subscribe(() => {
   console.log("Conexão aberta.");
   autorization();
-  tickSubscriber();
+  subscribeTicks();
   ping();
 });
 
