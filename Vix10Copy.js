@@ -64,7 +64,7 @@ onCloseObservable.subscribe(() => {
       console.log("Método closeHandler() chamado.");
 
     } catch (error) {
-      console.error("Erro ao tentar reconectar:", error);
+      console.log("Erro ao tentar reconectar:"+ error);
       api.closeHandler();
       api.reconnect();
       window.location.reload();
