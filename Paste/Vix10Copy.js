@@ -1,5 +1,5 @@
-import DerivAPIBasic from "../node_modules/@deriv/deriv-api/dist/DerivAPIBasic.js";
-import DerivAPI from "../node_modules/@deriv/deriv-api/dist/DerivAPI.js";
+import DerivAPIBasic from "https://cdn.skypack.dev/pin/@deriv/deriv-api@v1.0.15-f2uu4jUJIBBSNvXX1Opn/mode=imports/unoptimized/dist/DerivAPIBasic.js";
+import DerivAPI from "https://cdn.skypack.dev/pin/@deriv/deriv-api@v1.0.15-f2uu4jUJIBBSNvXX1Opn/mode=imports/unoptimized/dist/DerivAPI.js";
 
 const token = "ASe6rB5uVsZkDU7";
 const app_id = 52795;
