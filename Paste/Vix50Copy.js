@@ -23,14 +23,13 @@ function createWebSocket(app_id) {
 
     connection.onclose = function (event) {
       console.log("Conexão fechada:", event);
-      window.location.reload();
       reconnect()
     };
 
     connection.onerror = function (event) {
       console.error("Erro na conexão:", event);
       window.location.reload();
-      reconnect()
+
     };
     return connection;
   }
@@ -39,7 +38,7 @@ function createWebSocket(app_id) {
     console.log("Tentando reconectar em 500 milisegundos...");
     setTimeout(() => {
       connect();
-    }, 500); // Tentar reconectar após 5 segundos
+    }, 1000); // Tentar reconectar após 5 segundos
   }
   // Inicializa a conexão
   return connect();
@@ -53,18 +52,6 @@ let api = api2.basic
 const onCloseObservable = api.onClose();
 const onOpenObservable = api.onOpen();
 
-function criarParagrafo(texto) {
-  // Crie um elemento de parágrafo
-  var paragrafo = document.createElement("p");
-
-  // Adicione texto ao parágrafo (opcional)
-  paragrafo.textContent = texto || "Texto padrão para o parágrafo";
-
-  // Adicione o parágrafo ao corpo do documento (ou qualquer outro elemento desejado)
-  document.body.appendChild(paragrafo);
-}
-
-// Exemplo de uso
 
 // Subscrever aos eventos de fechamento
 onCloseObservable.subscribe(() => {
@@ -74,23 +61,22 @@ onCloseObservable.subscribe(() => {
     try {
       // Usar o método reconnect() fornecido pela API
       api.closeHandler();
-      api.reconnect();
-      window.location.reload();
+
       console.log("Método closeHandler() chamado.");
-      criarParagrafo("Conexão fechada");
+
     } catch (error) {
       console.error("Erro ao tentar reconectar:", error);
-      api.closeHandler();
+
       api.reconnect();
-      window.location.reload();
-      console.log("Método closeHandler() chamado.");
+
+      console.log("Método reconnect() chamado.");
     }
   }, 1000); // Tempo de espera de 1 segundos
 });
 
 window.addEventListener("offline", () => {
   console.log("O dispositivo está offline.");
-  api.closeHandler();
+
   window.location.reload();
 });
 
